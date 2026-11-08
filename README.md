@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/tinyverify-banner.svg" alt="TinyVerify" width="900">
+<img src="docs/assets/tinyverify-banner.png" alt="TinyVerify" width="900">
 
 # 🐟 TinyVerify
 
