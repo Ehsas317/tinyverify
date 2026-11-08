@@ -113,6 +113,7 @@ python3 tinyverify.py --name "Tesco" --jurisdiction BOTH --monitor \
 - ✅ **Formats** — `json` (pipelines/agents) · `table` (humans) · `csv` (Excel/Sheets)
 - ✅ **Monitor + webhook** — daily watchlist with Slack/email alerts
 - ✅ **Retries with backoff** — one flaky page won't sink a batch
+- ✅ **AI-ready (MCP)** — Claude/Cursor can call `tinyverify_check` as a tool
 - ✅ **20 offline tests** — parsers + formatters + verdict, no API key needed (`make test`)
 
 ## ⚙️ Configuration
@@ -195,6 +196,29 @@ tinyverify.py     # shim (back-compat: python3 tinyverify.py …)
 tests/            # parsers + report + mocked checks
 examples/         # live JSON outputs + demo transcript
 docs/assets/      # banner
+```
+
+## 🤖 Use with AI (MCP)
+
+TinyVerify ships an MCP server, so Claude, Cursor, and other agents can verify
+companies as a tool call — no copy-pasting JSON:
+
+```json
+{
+  "mcpServers": {
+    "tinyverify": {
+      "command": "tinyverify-mcp",
+      "env": { "TINYFISH_API_KEY": "..." }
+    }
+  }
+}
+```
+
+Tools: `tinyverify_check(name, jurisdiction, type)` → JSON report with `verdict`;
+`tinyverify_doctor()` → key/monitor health. Install both CLIs with:
+
+```shell
+pip install -e .         # gives `tinyverify` + `tinyverify-mcp` on PATH
 ```
 
 ## 🤝 Contributing
