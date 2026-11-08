@@ -1,0 +1,18 @@
+[project]
+name = "tinyverify"
+version = "1.1.0"
+description = "Verify a company is registered and active across 3 official registries with TinyFish Search/Fetch/Agent/Monitor."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = ["tinyfish>=0.47"]
+
+[project.scripts]
+tinyverify = "tinyverify:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

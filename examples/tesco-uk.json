@@ -1,0 +1,51 @@
+{
+  "tool": "TinyVerify",
+  "version": "1.1.0",
+  "query": {
+    "name": "Tesco",
+    "type": "company",
+    "jurisdiction": "UK"
+  },
+  "checks": [
+    {
+      "registry": "UK Companies House",
+      "query": "Tesco",
+      "name": "Tesco",
+      "status": "active",
+      "registration_number": "00445790",
+      "incorporated_on": "27 November 1947",
+      "registered_office": "Tesco House, Shire Park, Kestrel Way, Welwyn Garden City, United Kingdom, AL7 1GA",
+      "disciplinary_actions": "none shown on overview page",
+      "source_url": "https://find-and-update.company-information.service.gov.uk/company/00445790",
+      "checked_at": "2026-11-08T09:29:37.526496+00:00",
+      "matches": 8,
+      "reader": "Fetch"
+    },
+    {
+      "registry": "UK FCA Financial Services Register",
+      "query": "Tesco",
+      "status": "no_match",
+      "source_url": "https://register.fca.org.uk/s/firm?q=Tesco",
+      "checked_at": "2026-11-08T09:30:09.722938+00:00",
+      "matches": 0,
+      "reader": "Agent"
+    }
+  ],
+  "endpoints_used": [
+    "UK Companies House",
+    "UK FCA Financial Services Register"
+  ],
+  "estimated_points": 100,
+  "search_suggestion": [
+    "https://find-and-update.company-information.service.gov.uk/company/00445790",
+    "https://find-and-update.company-information.service.gov.uk/company/FC015640",
+    "https://find-and-update.company-information.service.gov.uk/company/NF003406"
+  ],
+  "tinyfish_usage": {
+    "Search": "client.search.query (free) - locate official entry per name",
+    "Fetch": "client.fetch.get_contents (free) - Companies House + SEC EDGAR markdown",
+    "Agent": "client.agent.run - FCA Register (Fetch: target_unreachable) + SEC table rescue",
+    "Monitor": "client.monitors.create - daily Page Monitor per source page ($0.005/run)"
+  },
+  "monitors": []
+}

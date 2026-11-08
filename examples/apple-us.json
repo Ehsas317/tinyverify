@@ -1,0 +1,41 @@
+{
+  "tool": "TinyVerify",
+  "version": "1.1.0",
+  "query": {
+    "name": "Apple",
+    "type": "company",
+    "jurisdiction": "US"
+  },
+  "checks": [
+    {
+      "registry": "US SEC EDGAR",
+      "query": "Apple",
+      "name": "Apple",
+      "status": "active (public filer)",
+      "registration_number": "0000320193",
+      "legal_name": "Apple Inc. SIC: 3571 - ELECTRONIC COMPUTERS",
+      "latest_10k_filed": "2026-11-03",
+      "disciplinary_actions": "none shown; see EDGAR filings",
+      "source_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-K&count=5",
+      "checked_at": "2026-11-08T09:30:13.590048+00:00",
+      "matches": 10,
+      "reader": "Fetch+Agent-rescue"
+    }
+  ],
+  "endpoints_used": [
+    "US SEC EDGAR"
+  ],
+  "estimated_points": 50,
+  "search_suggestion": [
+    "https://www.sec.gov/Archives/edgar/data/320193/000110465907068703/a07-23739_1s8.htm",
+    "https://www.sec.gov/Archives/edgar/data/320193/000114036125036310/ef20049213_s8.htm",
+    "https://www.sec.gov/Archives/edgar/data/320193/000119312519004664/d667873ddef14a.htm"
+  ],
+  "tinyfish_usage": {
+    "Search": "client.search.query (free) - locate official entry per name",
+    "Fetch": "client.fetch.get_contents (free) - Companies House + SEC EDGAR markdown",
+    "Agent": "client.agent.run - FCA Register (Fetch: target_unreachable) + SEC table rescue",
+    "Monitor": "client.monitors.create - daily Page Monitor per source page ($0.005/run)"
+  },
+  "monitors": []
+}
