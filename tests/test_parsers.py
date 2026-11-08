@@ -1,22 +1,18 @@
-"""Unit tests for the pure parsers in tinyverify.py.
-
-No API key, no network, no SDK needed - these run anywhere with stdlib only
-(plus pytest). Live registry verification is in examples/ + README.
-"""
+"""Unit tests for the pure parsers - no API key, no network."""
 
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tinyverify import (  # noqa: E402
-    REGISTRIES,
+from tinyverify.parsers import (  # noqa: E402
     choose_sec_match,
     parse_companies_house_overview,
     parse_company_numbers,
     parse_sec_latest_filing,
     parse_sec_rows,
 )
+from tinyverify.registries import REGISTRIES  # noqa: E402
 
 
 def test_parse_company_numbers_dedupes_and_keeps_order():
@@ -55,7 +51,6 @@ def test_parse_sec_rows():
 
 
 def test_parse_sec_latest_filing_ignores_accession_numbers():
-    # Filing Date column is `| 2026-11-03 |`; accession numbers must not match.
     detail = (
         "|10-K| Annual report Acc-no: 0000320193-26-000026 | 2026-11-03 | 001-36743 261514222|\n"
         "|10-K| Annual report Acc-no: 0000320193-25-000079 | 2025-10-31 | 001-36743 251437791|"

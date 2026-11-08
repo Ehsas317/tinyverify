@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img">
+  <title>TinyVerify - is this company actually registered?</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1026"/>
+      <stop offset="55%" stop-color="#16215C"/>
+      <stop offset="100%" stop-color="#0E5E6F"/>
+    </linearGradient>
+    <linearGradient id="fish" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7DD3E8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="400" fill="url(#bg)"/>
+  <!-- bubbles -->
+  <circle cx="1050" cy="70" r="10" fill="#FFFFFF" opacity="0.12"/>
+  <circle cx="1085" cy="110" r="6" fill="#FFFFFF" opacity="0.10"/>
+  <circle cx="1020" cy="120" r="7" fill="#FFFFFF" opacity="0.08"/>
+  <circle cx="140" cy="320" r="8" fill="#FFFFFF" opacity="0.08"/>
+  <circle cx="175" cy="350" r="5" fill="#FFFFFF" opacity="0.10"/>
+  <!-- fish -->
+  <g transform="translate(120 150)">
+    <ellipse cx="70" cy="45" rx="70" ry="40" fill="url(#fish)"/>
+    <path d="M135 45 L175 15 L175 75 Z" fill="url(#fish)"/>
+    <circle cx="45" cy="38" r="8" fill="#0B1026"/>
+    <circle cx="48" cy="36" r="3" fill="#FFFFFF"/>
+    <path d="M60 58 Q80 68 100 58" stroke="#0B1026" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- text -->
+  <text x="340" y="155" font-family="Segoe UI, system-ui, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF">TinyVerify</text>
+  <text x="340" y="210" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="400" fill="#C7D2FE">Is this company actually registered?</text>
+  <text x="340" y="260" font-family="Segoe UI, system-ui, sans-serif" font-size="24" fill="#A5B4D4">3 official registries · Search → Fetch → Agent → Monitor · Live in seconds</text>
+  <rect x="340" y="295" rx="14" ry="14" width="430" height="46" fill="#FFFFFF" opacity="0.10"/>
+  <text x="360" y="326" font-family="Consolas, monospace" font-size="20" fill="#E0F2FE">$ python3 tinyverify.py --name "Tesco" --monitor</text>
+</svg>
