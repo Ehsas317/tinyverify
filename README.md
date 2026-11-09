@@ -181,6 +181,22 @@ Every check is stamped `source_url` + `checked_at` + `reader`, and `no_match` / 
 
 Full outputs: [`examples/`](examples/) · Transcript: [`examples/DEMO.md`](examples/DEMO.md)
 
+## 🔀 State machines (explicit, in `states.py`)
+
+Every status the tool can emit is declared in one place — no bare strings in the logic:
+
+```mermaid
+stateDiagram-v2
+    [*] --> CheckOutcome
+    CheckOutcome: active / dissolved / unknown / no_match / ambiguous / authorised
+    [*] --> Verdict: fold(VERDICT_PRIORITY)
+    Verdict: ambiguous > not_found > partial > verified
+    [*] --> MonitorState: not_requested / created / skipped
+    [*] --> Rescue: Fetch date missing → Agent
+```
+
+Import `tinyverify.states` in your code, or read `CHECK_STATUSES` / `VERDICT_PRIORITY` as the spec. Public JSON/CLI/exit codes unchanged.
+
 ## 📁 Project structure
 
 ```

@@ -6,6 +6,7 @@ import urllib.parse
 from datetime import datetime, timezone
 
 from .client import TinyFishClient
+from .states import needs_agent_rescue
 from .parsers import (
     choose_sec_match,
     parse_companies_house_overview,
@@ -75,7 +76,7 @@ def check_us(cli: TinyFishClient, name: str) -> dict:
     cik, legal, n = choose_sec_match(rows, name)
     detail = f"https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={cik}&type=10-K&count=5"
     latest = parse_sec_latest_filing(cli.fetch(detail, f"SEC filings detail CIK {cik}"))
-    if not latest:  # Agent rescue: table missing from Fetch markdown
+    if needs_agent_rescue(latest):  # Agent rescue: table missing from Fetch markdown
         latest = cli.agent(
             detail,
             'Extract latest 10-K filing date as JSON: {"latest_10k_date": str}. Empty string if none.',

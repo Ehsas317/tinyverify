@@ -17,20 +17,20 @@ from pathlib import Path
 from . import __version__
 from .client import TinyFishClient
 from .report import build_report, to_csv_many, to_json, to_table
+from .states import (
+    EXIT_FETCH,
+    EXIT_OK,
+    EXIT_USAGE,
+    aggregate_verdict,
+    resolve_intent,
+)
 
-EXIT_OK, EXIT_USAGE, EXIT_FETCH = 0, 2, 3
+__all__ = ["EXIT_OK", "EXIT_USAGE", "EXIT_FETCH", "_verdict", "main", "build_parser"]
 
 
 def _verdict(checks: list[dict]) -> str:
-    """One-word hand-off for compliance/hiring use: verified | partial | not_found | ambiguous."""
-    statuses = [c["status"] for c in checks]
-    if any(s == "ambiguous" for s in statuses):
-        return "ambiguous"
-    if all(s == "no_match" for s in statuses):
-        return "not_found"
-    if any(s == "no_match" for s in statuses):
-        return "partial"
-    return "verified"
+    """One-word hand-off for compliance/hiring use (see states.aggregate_verdict)."""
+    return aggregate_verdict(checks)
 
 
 def _read_names(args) -> list[str]:
@@ -119,7 +119,7 @@ def main(argv: list[str] | None = None) -> int:
         return _doctor()
 
     names = _read_names(args)
-    if not names:
+    if resolve_intent(doctor=False, names=names) == "usage_error":
         print("error: --name or --input is required", file=sys.stderr)
         return EXIT_USAGE
     if not Path(__file__).parent:

@@ -9,8 +9,7 @@ import json
 from .client import TinyFishClient
 from .checks import check_fca, check_uk, check_us
 from .registries import REGISTRIES
-
-TIER_POINTS = {1: 50, 2: 100, 3: 150, 4: 200}
+from .states import TIER_POINTS, monitor_state  # noqa: F401  (monitor_state re-exported)
 
 TINYFISH_USAGE = {
     "Search": "client.search.query (free) - locate official entry per name",
